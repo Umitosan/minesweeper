@@ -14,9 +14,9 @@ export class BoardComponent implements OnInit {
   constructor( ) { }
 
   ngOnInit( ) {
-    // create baord tiles
-    for (var yy = 1; yy < 11; yy++) {
-      for (var xx = 1; xx < 11; xx++) {
+    // create gameBoard with new tiles
+    for (var yy = 0; yy < 10; yy++) {
+      for (var xx = 0; xx < 10; xx++) {
         let newTile: Tile = new Tile(xx,yy,"clean",false);
         this.gameBoard.push(newTile);
       }
