@@ -3,12 +3,25 @@
 <div class="board">
 
   <table>
-    <tr *ngFor="let numY of [0,1,2,3,4,5,6,7,8,9]">
-      <td *ngFor="let numX of [0,1,2,3,4,5,6,7,8,9]"
-          (click)="tileWasClicked(gameBoard[numX+(numY*10)])">
-        {{gameBoard[numX+(numY*10)].xPos}}-{{gameBoard[numX+(numY*10)].yPos}}
+    <tr *ngFor="let row of gameBoard">
+      <td *ngFor="let tile of row">
+        {{tile.xPos}}-{{tile.yPos}}
       </td>
     </tr>
   </table>
 
 </div>
+
+<!-- <div class="board">
+
+  <table>
+    <tr *ngFor="let numY of [0,1,2,3,4,5,6,7,8,9]">
+      <td *ngFor="let numX of [0,1,2,3,4,5,6,7,8,9]"
+          (click)="tileWasClicked()" ng-class="findTileByXY(numX,numY).status">
+
+        {{gameBoard[numX+(numY*10)].xPos}}-{{gameBoard[numX+(numY*10)].yPos}}
+      </td>
+    </tr>
+  </table>
+
+</div> -->

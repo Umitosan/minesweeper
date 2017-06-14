@@ -9,25 +9,35 @@ import { Tile } from '../tile.model'
 })
 
 export class BoardComponent implements OnInit {
-  gameBoard: Tile[] = [];
-  clickedTile: Tile;
+  gameBoard: any[] = [];
 
   constructor( ) { }
 
   ngOnInit( ) {
     // create gameBoard with new tiles
-    for (var yy = 0; yy < 10; yy++) {
-      for (var xx = 0; xx < 10; xx++) {
-        let newTile: Tile = new Tile(xx,yy,"clean",false);
-        this.gameBoard.push(newTile);
+    let tmpBoardArr: any[] = [];
+    for (let row = 0; row < 10; row++) {
+      let rowArr: any[] = [];
+      for (let col = 0; col < 10; col++) {
+        let newTile: Tile = new Tile(col,row,"clean",false);
+        rowArr.push(newTile);
       }
+      tmpBoardArr.push(rowArr);
     }
-    // console.log(this.gameBoard);
+    this.gameBoard = tmpBoardArr;
+    // console.log("gameboard = ", this.gameBoard);
   }
 
-  tileWasClicked(someTile) {
-   console.log("Your Clicked tile =  " , someTile);
-  }
+  // findTileByXY(someX, someY) {
+  //   let foundTile: Tile;
+  //   for (let i=0; i<this.gameBoard.length; i++) {
+  //     if ( (this.gameBoard[i].xPos === someX) && (this.gameBoard[i].yPos === someY) ) {
+  //       foundTile = this.gameBoard[i];
+  //     }
+  //   }
+  //   return foundTile
+  // }
+
 
 }
 

@@ -1,11 +1,26 @@
-tr , td {
+.board {
+}
+
+.flagged {
+  background-color: yellow;
+  color: yellow;
+}
+
+.clean {
+  background-color: green;
+  color: green;
+}
+
+td {
   background-color: lightblue;
   height: 40px;
   width: 40px;
   border-style: solid;
   border-color: green;
-  border-width: 1px;
+  border-width: 1px
 }
 
-.board {
+img {
+  height: 22px;
+  width: 22px;
 }
