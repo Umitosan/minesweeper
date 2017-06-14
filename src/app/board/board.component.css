@@ -1,0 +1,11 @@
+tr , td {
+  background-color: lightblue;
+  height: 40px;
+  width: 40px;
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+}
+
+.board {
+}
