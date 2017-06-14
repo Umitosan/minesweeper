@@ -10,6 +10,7 @@ import { Tile } from '../tile.model'
 
 export class BoardComponent implements OnInit {
   gameBoard: Tile[] = [];
+  clickedTile: Tile;
 
   constructor( ) { }
 
@@ -21,7 +22,11 @@ export class BoardComponent implements OnInit {
         this.gameBoard.push(newTile);
       }
     }
-    console.log(this.gameBoard);
+    // console.log(this.gameBoard);
+  }
+
+  tileWasClicked(someTile) {
+   console.log("Your Clicked tile =  " , someTile);
   }
 
 }

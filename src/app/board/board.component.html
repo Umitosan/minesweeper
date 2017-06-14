@@ -1,21 +1,14 @@
 <h3>BOARD</h3>
 
 <div class="board">
+
   <table>
     <tr *ngFor="let numY of [0,1,2,3,4,5,6,7,8,9]">
-      <td *ngFor="let numX of [0,1,2,3,4,5,6,7,8,9]">
+      <td *ngFor="let numX of [0,1,2,3,4,5,6,7,8,9]"
+          (click)="tileWasClicked(gameBoard[numX+(numY*10)])">
         {{gameBoard[numX+(numY*10)].xPos}}-{{gameBoard[numX+(numY*10)].yPos}}
       </td>
     </tr>
   </table>
-</div>
 
-<!-- <div class="board">
-  <table>
-    <tr *ngFor="let numY of [1,2,3,4,5,6,7,8,9,10]">
-      <td *ngFor="let numX of [1,2,3,4,5,6,7,8,9,10]">
-        {{numX}}-{{numY}}
-      </td>
-    </tr>
-  </table>
-</div> -->
+</div>
