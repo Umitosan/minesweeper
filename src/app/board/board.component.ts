@@ -11,6 +11,7 @@ import { Tile } from '../tile.model';
 export class BoardComponent implements OnInit {
   gameBoard: any[] = [];
   bombsTotalMain: number;
+  gameStatus: string;
 
   constructor( ) { }
 
@@ -37,6 +38,7 @@ export class BoardComponent implements OnInit {
         this.setBombScore(i,j);
       }
     }
+    this.gameStatus = "play";
     // document.addEventListener('contextmenu', function(e) {  // right-click listener
     //         console.log("right-click happened");
     //         e.preventDefault();
@@ -89,7 +91,7 @@ export class BoardComponent implements OnInit {
       if ( this.gameBoard[myRow][myCol].bomb === false ) {
         this.gameBoard[myRow][myCol].bomb = true;
         totalBombs -= 1;
-        console.log("c:",this.gameBoard[myRow][myCol].tCol,"r:",this.gameBoard[myRow][myCol].tRow);
+        // console.log("c:",this.gameBoard[myRow][myCol].tCol,"r:",this.gameBoard[myRow][myCol].tRow);
       }
     }
   }
@@ -116,11 +118,11 @@ export class BoardComponent implements OnInit {
 
   tileRightClicked(event, someTile) {
     event.preventDefault();
-    if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'flagged') {
-      this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked'
-    } else {
-      this.gameBoard[someTile.tRow][someTile.tCol].status = 'flagged';
-    }
+      if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'flagged') {
+        this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked'
+      } else if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'unclicked') {
+        this.gameBoard[someTile.tRow][someTile.tCol].status = 'flagged';
+      }
   }
 
   revealAdjacent(row, col) {
@@ -167,7 +169,7 @@ export class BoardComponent implements OnInit {
   }
 
   gameLose() {
-    console.log("BOOOM! YOU LOSE!");
+    this.gameStatus = "lose";
   }
 
   checkGameWin() {
@@ -181,7 +183,7 @@ export class BoardComponent implements OnInit {
       }
     }
     if (count === this.bombsTotalMain) {
-      console.log("you win!");
+      this.gameStatus = "win";
     }
   }
 

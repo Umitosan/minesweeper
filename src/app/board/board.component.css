@@ -14,14 +14,31 @@
   padding-right: 40%;
 }
 
-#smile {
+.play {
   background-image: url("./../../assets/smile.png");
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
   height: 60px;
   width: 60px;
+}
 
+.win {
+  background-image: url("./../../assets/smilewin.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 60px;
+}
+
+.lose {
+  background-image: url("./../../assets/smilelose.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 60px;
 }
 
 .unclicked {
