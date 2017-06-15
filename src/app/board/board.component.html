@@ -1,10 +1,13 @@
 <h3>BOARD</h3>
 
+<button class="btn btn-default btn-sm" (click)="setBombs()">Set Bombs</button>
+
 <div class="board">
 
   <table>
     <tr *ngFor="let row of gameBoard">
       <td *ngFor="let tile of row" [class]="tile.status" (click)="tileClicked(tile)">
+        <!-- location lables -->
         <!-- {{tile.tCol}}-{{tile.tRow}} -->
       </td>
     </tr>

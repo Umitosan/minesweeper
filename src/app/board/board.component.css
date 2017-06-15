@@ -17,11 +17,15 @@ html {
 }
 
 .clean {
+  background-color: lightgrey;
+  outline:1px solid grey;
 }
 
 .flagged {
-  background-color: lightgrey;
-  outline:1px solid grey;
+  background-image: url("./../../assets/flagged.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .bomb {
