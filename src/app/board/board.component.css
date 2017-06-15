@@ -35,6 +35,22 @@ html {
   background-repeat: no-repeat;
 }
 
+.bombRed {
+  background-image: url("http://intrologic.stanford.edu/images/mine.png");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-color: red
+}
+
+.number {
+  background-color: lightgrey;
+  color: blue;
+  font-size: 20px;
+  font-weight: bolder;
+  outline:1px solid grey;
+}
+
 td {
   height: 40px;
   width: 40px;

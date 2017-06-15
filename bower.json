@@ -3,7 +3,7 @@
   "description": "",
   "main": "",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/Umitosan/minesweeper-ang",
   "ignore": [
     "**/.*",
     "node_modules",
