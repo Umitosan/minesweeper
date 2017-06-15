@@ -42,32 +42,6 @@ export class BoardComponent implements OnInit {
       return Math.floor(Math.random()*(max-min+1)+min);
   }
 
-  setBombs() {
-    let totalBombs: number = 11;
-    while (totalBombs > 0) {
-      let myRow: number = this.randomIntFromInterval(0,9);
-      let myCol: number = this.randomIntFromInterval(0,9);
-      if ( this.gameBoard[myRow][myCol].bomb === false ) {
-        this.gameBoard[myRow][myCol].bomb = true;
-        totalBombs -= 1;
-        console.log("c:",this.gameBoard[myRow][myCol].tCol,"r:",this.gameBoard[myRow][myCol].tRow);
-      }
-    }
-  }
-
-  tileClicked(someTile) {
-    if (someTile.bomb === true) {
-      this.bombTriggered(someTile);
-    } else if (someTile.status === "unclicked") {
-      if (someTile.bombScore === 0) {
-        someTile.status = "clean";
-      } else {
-        // reveal number
-        someTile.status = "number";
-      }
-    }
-  }
-
   setBombScore(row, col) {
     let foundBombScore: number = 0;
     if (this.gameBoard[row][col + 1]) {
@@ -95,6 +69,61 @@ export class BoardComponent implements OnInit {
       if (this.gameBoard[row - 1][col + 1].bomb === true)  { foundBombScore += 1; }
     }
     this.gameBoard[row][col].bombScore = foundBombScore;
+  }
+
+  setBombs() {
+    let totalBombs: number = 11;
+    while (totalBombs > 0) {
+      let myRow: number = this.randomIntFromInterval(0,9);
+      let myCol: number = this.randomIntFromInterval(0,9);
+      if ( this.gameBoard[myRow][myCol].bomb === false ) {
+        this.gameBoard[myRow][myCol].bomb = true;
+        totalBombs -= 1;
+        console.log("c:",this.gameBoard[myRow][myCol].tCol,"r:",this.gameBoard[myRow][myCol].tRow);
+      }
+    }
+  }
+
+  tileClicked(someTile) {
+    if (someTile.bomb === true) {
+      this.bombTriggered(someTile);
+    } else if (someTile.status === "unclicked") {
+      // reveal tile
+      if (someTile.bombScore === 0) {
+        someTile.status = "clean";
+        //reveal adjacent tiles
+        this.revealAdjacent(someTile.tRow, someTile.tCol);
+      } else {
+        someTile.status = "number";
+      }
+    }
+  }
+
+  revealAdjacent(row, col) {
+    if (this.gameBoard[row][col + 1]) {
+      this.tileClicked(this.gameBoard[row][col + 1]);
+    }
+    if ( this.gameBoard[row + 1] && this.gameBoard[row + 1][col + 1]) {
+      this.tileClicked(this.gameBoard[row + 1][col + 1]);
+    }
+    if ( this.gameBoard[row + 1] && this.gameBoard[row + 1][col]) {
+      this.tileClicked(this.gameBoard[row + 1][col]);
+    }
+    if ( this.gameBoard[row + 1] && this.gameBoard[row + 1][col - 1]) {
+      this.tileClicked(this.gameBoard[row + 1][col - 1]);
+    }
+    if ( this.gameBoard[row][col - 1 ]) {
+      this.tileClicked(this.gameBoard[row][col - 1 ]);
+    }
+    if ( this.gameBoard[row - 1] && this.gameBoard[row - 1][col - 1]) {
+      this.tileClicked(this.gameBoard[row - 1][col - 1]);
+    }
+    if ( this.gameBoard[row - 1] && this.gameBoard[row - 1][col]) {
+      this.tileClicked(this.gameBoard[row - 1][col]);
+    }
+    if ( this.gameBoard[row - 1] && this.gameBoard[row - 1][col + 1]) {
+      this.tileClicked(this.gameBoard[row - 1][col + 1]);
+    }
   }
 
   bombTriggered(thisTile) {
