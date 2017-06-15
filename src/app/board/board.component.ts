@@ -25,6 +25,7 @@ export class BoardComponent implements OnInit {
       tmpBoardArr.push(rowArr);
     }
     this.gameBoard = tmpBoardArr;
+    this.setBombs();
   } // end INIT
 
   randomIntFromInterval(min,max) {
@@ -32,25 +33,21 @@ export class BoardComponent implements OnInit {
   }
 
   setBombs() {
-    let totalBombs: number = 10;
+    let totalBombs: number = 20;
     while (totalBombs > 0) {
       let myRow: number = this.randomIntFromInterval(0,9);
       let myCol: number = this.randomIntFromInterval(0,9);
       this.gameBoard[myRow][myCol].bomb = true;
       totalBombs -= 1;
-      console.log(this.gameBoard[myRow][myCol]);
+      console.log("c:",this.gameBoard[myRow][myCol].tCol,"r:",this.gameBoard[myRow][myCol].tRow);
     }
   }
 
   tileClicked(someTile) {
     if (someTile.bomb === true) {
-      this.bombTriggered();
       this.gameBoard[someTile.tRow][someTile.tCol].status = "bomb";
-    }
-
-    if (someTile.status === "unclicked") {
-      this.gameBoard[someTile.tRow][someTile.tCol].status = "flagged";
-    } else if (someTile.status === "flagged") {
+      this.bombTriggered();
+    } else if (someTile.status === "unclicked") {
       this.gameBoard[someTile.tRow][someTile.tCol].status = "clean";
     }
   }
