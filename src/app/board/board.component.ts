@@ -83,7 +83,7 @@ export class BoardComponent implements OnInit {
   }
 
   setBombs() {
-    let totalBombs: number = 11;
+    let totalBombs: number = 20;
     this.bombsTotalMain = totalBombs;
     while (totalBombs > 0) {
       let myRow: number = this.randomIntFromInterval(0,9);
@@ -97,8 +97,8 @@ export class BoardComponent implements OnInit {
   }
 
   tileClicked(someTile) {
-    // prevent left-click if flagged
-    if (this.gameBoard[someTile.tRow][someTile.tCol].status !== 'flagged') {
+    // prevent left-click if flagged OR game over
+    if ((this.gameBoard[someTile.tRow][someTile.tCol].status !== 'flagged') && (this.gameStatus === 'play')) {
           // normal left click
           if (someTile.bomb === true) {
             this.bombTriggered(someTile);
@@ -118,11 +118,13 @@ export class BoardComponent implements OnInit {
 
   tileRightClicked(event, someTile) {
     event.preventDefault();
-      if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'flagged') {
-        this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked'
-      } else if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'unclicked') {
-        this.gameBoard[someTile.tRow][someTile.tCol].status = 'flagged';
-      }
+    if (this.gameStatus === 'play') {
+          if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'flagged') {
+            this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked'
+          } else if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'unclicked') {
+            this.gameBoard[someTile.tRow][someTile.tCol].status = 'flagged';
+          }
+    }
   }
 
   revealAdjacent(row, col) {
@@ -195,3 +197,4 @@ export class BoardComponent implements OnInit {
 // tRow: number
 // status: string
 // bomb: boolean
+// bombScore: number

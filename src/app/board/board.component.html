@@ -16,7 +16,7 @@
 
 </div>
 
-<h1>{{gameOver}}</h1>
+<h1 *ngIf="gameStatus !== 'play'">You {{gameStatus}}!!!</h1>
 
 
 <!-- old single demension array method -->
