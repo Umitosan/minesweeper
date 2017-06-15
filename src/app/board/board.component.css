@@ -1,24 +1,42 @@
-.board {
+html {
+  background-color: grey;
 }
 
-.flagged {
-  background-color: yellow;
+.board {
+  background-color: grey;
+  border-style: solid;
+  border-color: grey;
+  border-width: 6px;
+}
+
+.unclicked {
+  background-image: url("./../../assets/tile.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .clean {
-  background-color: lightblue;
+}
+
+.flagged {
+  background-color: lightgrey;
+  outline:1px solid grey;
+}
+
+.bomb {
+  background-image: url("http://intrologic.stanford.edu/images/mine.png");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
 }
 
 td {
-  background-color: lightblue;
   height: 40px;
   width: 40px;
-  border-style: solid;
-  border-color: green;
-  border-width: 1px
 }
 
-img {
-  height: 22px;
-  width: 22px;
-}
+
+
+/*images*/
+/*bomb:   background-image: url("http://intrologic.stanford.edu/images/mine.png");*/

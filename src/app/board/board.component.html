@@ -5,7 +5,7 @@
   <table>
     <tr *ngFor="let row of gameBoard">
       <td *ngFor="let tile of row" [class]="tile.status" (click)="tileClicked(tile)">
-        {{tile.tCol}}-{{tile.tRow}}
+        <!-- {{tile.tCol}}-{{tile.tRow}} -->
       </td>
     </tr>
   </table>

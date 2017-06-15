@@ -19,18 +19,18 @@ export class BoardComponent implements OnInit {
     for (let row = 0; row < 10; row++) {
       let rowArr: any[] = [];
       for (let col = 0; col < 10; col++) {
-        let newTile: Tile = new Tile(col,row,"clean",false);
+        let newTile: Tile = new Tile(col,row,"unclicked",false);
         rowArr.push(newTile);
       }
       tmpBoardArr.push(rowArr);
     }
     this.gameBoard = tmpBoardArr;
-    // console.log("gameboard = ", this.gameBoard);
   }
 
   tileClicked(someTile) {
-    let foundTile: Tile = this.findTileByXY(someTile.tCol, someTile.tRow)
-    console.log("foundTile: ",foundTile);
+
+    // update tile to be flagged
+    this.gameBoard[someTile.tRow][someTile.tCol].status = "flagged";
   }
 
 
