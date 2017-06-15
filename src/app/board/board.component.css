@@ -1,12 +1,27 @@
-html {
-  background-color: grey;
+.row {
+  background-color: lightgrey;
 }
 
 .board {
-  background-color: grey;
+  background-color: lightgrey;
   border-style: solid;
-  border-color: grey;
+  border-color: lightgrey;
   border-width: 6px;
+}
+
+#smileDiv {
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+#smile {
+  background-image: url("./../../assets/smile.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 60px;
+
 }
 
 .unclicked {
@@ -33,6 +48,7 @@ html {
   background-position: center;
   background-size: 50%;
   background-repeat: no-repeat;
+  outline:1px solid grey;
 }
 
 .bombRed {
@@ -40,7 +56,8 @@ html {
   background-position: center;
   background-size: 50%;
   background-repeat: no-repeat;
-  background-color: red
+  background-color: red;
+  outline:1px solid grey;
 }
 
 .number {

@@ -15,6 +15,10 @@ export class BoardComponent implements OnInit {
   constructor( ) { }
 
   ngOnInit( ) {
+    this.boardInit();
+  }
+
+  boardInit() {
     // create gameBoard
     let tmpBoardArr: any[] = [];
     for (let row = 0; row < 10; row++) {
@@ -37,7 +41,11 @@ export class BoardComponent implements OnInit {
     //         console.log("right-click happened");
     //         e.preventDefault();
     // });
-  } // end INIT
+  }
+
+  smileClicked() {
+    this.boardInit();
+  }
 
   randomIntFromInterval(min,max) {
       return Math.floor(Math.random()*(max-min+1)+min);
@@ -87,19 +95,32 @@ export class BoardComponent implements OnInit {
   }
 
   tileClicked(someTile) {
-    if (someTile.bomb === true) {
-      this.bombTriggered(someTile);
-    } else if (someTile.status === "unclicked") {
-      // reveal tile
-      if (someTile.bombScore === 0) {
-        someTile.status = "clean";
-        //reveal adjacent tiles
-        this.revealAdjacent(someTile.tRow, someTile.tCol);
-      } else {
-        someTile.status = "number";
-      }
+    // prevent left-click if flagged
+    if (this.gameBoard[someTile.tRow][someTile.tCol].status !== 'flagged') {
+          // normal left click
+          if (someTile.bomb === true) {
+            this.bombTriggered(someTile);
+          } else if (someTile.status === "unclicked") {
+            // reveal tile
+            if (someTile.bombScore === 0) {
+              someTile.status = "clean";
+              //reveal adjacent tiles
+              this.revealAdjacent(someTile.tRow, someTile.tCol);
+            } else {
+              someTile.status = "number";
+            }
+          }
     }
     this.checkGameWin();
+  }
+
+  tileRightClicked(event, someTile) {
+    event.preventDefault();
+    if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'flagged') {
+      this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked'
+    } else {
+      this.gameBoard[someTile.tRow][someTile.tCol].status = 'flagged';
+    }
   }
 
   revealAdjacent(row, col) {
@@ -154,27 +175,15 @@ export class BoardComponent implements OnInit {
 
     for (let i=0; i<10; i++) {
       for (let j=0; j<10; j++) {
-        if (this.gameBoard[i][j].status === "unclicked") {
+        if ((this.gameBoard[i][j].status === "unclicked") || (this.gameBoard[i][j].status === "flagged")) {
           count += 1;
         }
       }
     }
     if (count === this.bombsTotalMain) {
-      alert("you win!");
+      console.log("you win!");
     }
   }
-
-  // findTileByXY(someCol, someRow) {
-  //   let foundTile: Tile;
-  //   for (let i=0; i<10; i++) {
-  //     for (let j=0; j<10; j++) {
-  //       if ( ((this.gameBoard[i][j].tRow === someRow)&&(this.gameBoard[i][j].tCol === someCol)) ) {
-  //         foundTile = this.gameBoard[i][j];
-  //       }
-  //     }
-  //   }
-  //   return foundTile
-  // }
 
 }
 

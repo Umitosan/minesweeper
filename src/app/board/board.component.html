@@ -1,26 +1,20 @@
-<h3>BOARD</h3>
+<div id="smileDiv">
+  <div id="smile" (click)="smileClicked()"> 
+  </div>
+</div>
 
-<!-- <button class="btn btn-default btn-sm" (click)="setBombs()">Set Bombs</button> -->
 
 <div class="board">
 
   <table>
     <tr *ngFor="let row of gameBoard">
-      <td *ngFor="let tile of row" [class]="tile.status" (click)="tileClicked(tile)">
+      <td *ngFor="let tile of row" [class]="tile.status" (click)="tileClicked(tile)"  (contextmenu)="tileRightClicked($event, tile)">
         <p *ngIf="tile.status === 'number'">{{tile.bombScore}}</p>
-        <!-- location lables -->
-        <!-- {{tile.tCol}}-{{tile.tRow}} -->
       </td>
     </tr>
   </table>
 
 </div>
-
-<!--  right-click -->
-<!-- document.addEventListener('contextmenu', function(e) {  // right-click listener
-        console.log("right-click happened");
-        e.preventDefault();
-}); -->
 
 
 <!-- old single demension array method -->
