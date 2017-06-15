@@ -10,6 +10,7 @@ import { Tile } from '../tile.model';
 
 export class BoardComponent implements OnInit {
   gameBoard: any[] = [];
+  bombsTotalMain: number;
 
   constructor( ) { }
 
@@ -73,6 +74,7 @@ export class BoardComponent implements OnInit {
 
   setBombs() {
     let totalBombs: number = 11;
+    this.bombsTotalMain = totalBombs;
     while (totalBombs > 0) {
       let myRow: number = this.randomIntFromInterval(0,9);
       let myCol: number = this.randomIntFromInterval(0,9);
@@ -97,6 +99,7 @@ export class BoardComponent implements OnInit {
         someTile.status = "number";
       }
     }
+    this.checkGameWin();
   }
 
   revealAdjacent(row, col) {
@@ -127,9 +130,9 @@ export class BoardComponent implements OnInit {
   }
 
   bombTriggered(thisTile) {
-    console.log("BOOOM!");
     this.showAllBombs();
     this.gameBoard[thisTile.tRow][thisTile.tCol].status = "bombRed";
+    this.gameLose();
   }
 
   showAllBombs() {
@@ -139,6 +142,25 @@ export class BoardComponent implements OnInit {
           this.gameBoard[i][j].status = "bomb";
         }
       }
+    }
+  }
+
+  gameLose() {
+    console.log("BOOOM! YOU LOSE!");
+  }
+
+  checkGameWin() {
+    let count: number = 0;
+
+    for (let i=0; i<10; i++) {
+      for (let j=0; j<10; j++) {
+        if (this.gameBoard[i][j].status === "unclicked") {
+          count += 1;
+        }
+      }
+    }
+    if (count === this.bombsTotalMain) {
+      alert("you win!");
     }
   }
 
