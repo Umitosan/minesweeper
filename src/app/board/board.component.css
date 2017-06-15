@@ -3,12 +3,10 @@
 
 .flagged {
   background-color: yellow;
-  color: yellow;
 }
 
 .clean {
-  background-color: green;
-  color: green;
+  background-color: lightblue;
 }
 
 td {

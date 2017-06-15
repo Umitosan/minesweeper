@@ -28,22 +28,29 @@ export class BoardComponent implements OnInit {
     // console.log("gameboard = ", this.gameBoard);
   }
 
-  // findTileByXY(someX, someY) {
-  //   let foundTile: Tile;
-  //   for (let i=0; i<this.gameBoard.length; i++) {
-  //     if ( (this.gameBoard[i].xPos === someX) && (this.gameBoard[i].yPos === someY) ) {
-  //       foundTile = this.gameBoard[i];
-  //     }
-  //   }
-  //   return foundTile
-  // }
+  tileClicked(someTile) {
+    let foundTile: Tile = this.findTileByXY(someTile.tCol, someTile.tRow)
+    console.log("foundTile: ",foundTile);
+  }
 
+
+  findTileByXY(someCol, someRow) {
+    let foundTile: Tile;
+    for (let i=0; i<10; i++) {
+      for (let j=0; j<10; j++) {
+        if ( ((this.gameBoard[i][j].tRow === someRow)&&(this.gameBoard[i][j].tCol === someCol)) ) {
+          foundTile = this.gameBoard[i][j];
+        }
+      }
+    }
+    return foundTile
+  }
 
 }
 
 
 // TILE params
-// xPos: number
-// yPos: number
+// tCol: number
+// tRow: number
 // status: string
 // bomb: boolean

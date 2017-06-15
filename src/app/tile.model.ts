@@ -1,5 +1,5 @@
 export class Tile {
   constructor (
-    public xPos: number, public yPos: number, public status: string, public bomb: boolean
+    public tCol: number, public tRow: number, public status: string, public bomb: boolean
   ) {}
 }
