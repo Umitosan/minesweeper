@@ -3,31 +3,16 @@
   </div>
 </div>
 
-
 <div class="board">
 
-  <table>
-    <tr *ngFor="let row of gameBoard">
-      <td *ngFor="let tile of row" [class]="tile.status" (click)="tileClicked(tile)"  (contextmenu)="tileRightClicked($event, tile)">
-        <p *ngIf="tile.status === 'number'">{{tile.bombScore}}</p>
-      </td>
-    </tr>
-  </table>
+    <div class="divRow" *ngFor="let row of gameBoard">
+      <div class="divCol" *ngFor="let tile of row">
+        <div id="tileID" [class]="tile.status" (click)="tileClicked(tile)"  (contextmenu)="tileRightClicked($event, tile)">
+          <p *ngIf="tile.status === 'number'">{{tile.bombScore}}</p>
+        </div>
+      </div>
+    </div>
 
 </div>
 
 <h1 *ngIf="gameStatus !== 'play'">You {{gameStatus}}!!!</h1>
-
-
-<!-- old single demension array method -->
-<!-- <div class="board">
-  <table>
-    <tr *ngFor="let numY of [0,1,2,3,4,5,6,7,8,9]">
-      <td *ngFor="let numX of [0,1,2,3,4,5,6,7,8,9]"
-          (click)="tileWasClicked()" ng-class="findTileByXY(numX,numY).status">
-
-        {{gameBoard[numX+(numY*10)].xPos}}-{{gameBoard[numX+(numY*10)].yPos}}
-      </td>
-    </tr>
-  </table>
-</div> -->

@@ -1,17 +1,38 @@
+
 .row {
   background-color: lightgrey;
 }
 
 .board {
+  text-align: center;
   background-color: lightgrey;
-  border-style: solid;
-  border-color: lightgrey;
-  border-width: 6px;
+  height: 400px;
+  width: 400px;
+  outline-color: grey;
+  outline-style: solid;
+  outline-width: 4px;
+}
+
+.divRow {
+  display: block;
+  height: 40px;
+}
+
+.divCol {
+  float: left;
+  height: 40px;
+  width: 40px;
+}
+
+#tileID {
+  height: 40px;
+  width: 40px;
 }
 
 #smileDiv {
   padding-left: 40%;
   padding-right: 40%;
+  margin-bottom: 10px;
 }
 
 .play {
@@ -50,7 +71,7 @@
 
 .clean {
   background-color: lightgrey;
-  outline:1px solid grey;
+  outline:2px solid grey;
 }
 
 .flagged {
@@ -65,7 +86,7 @@
   background-position: center;
   background-size: 50%;
   background-repeat: no-repeat;
-  outline:1px solid grey;
+  outline:2px solid grey;
 }
 
 .bombRed {
@@ -74,21 +95,17 @@
   background-size: 50%;
   background-repeat: no-repeat;
   background-color: red;
-  outline:1px solid grey;
+  outline:2px solid grey;
 }
 
 .number {
   background-color: lightgrey;
   color: blue;
-  font-size: 20px;
-  font-weight: bolder;
-  outline:1px solid grey;
+  font-size: 24px;
+  font-weight: bold;
+  outline:2px solid grey;
 }
 
-td {
-  height: 40px;
-  width: 40px;
-}
 
 
 

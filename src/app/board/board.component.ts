@@ -12,8 +12,8 @@ export class BoardComponent implements OnInit {
   gameBoard: any[] = [];
   bombsTotalMain: number;
   gameStatus: string;
-  BOARDSIZE: number = 20;
-  BOARDBOMBS: number = 50;
+  BOARDSIZE: number = 10;
+  BOARDBOMBS: number = 12;
 
   constructor( ) { }
 
