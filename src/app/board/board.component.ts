@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tile } from '../tile.model';
-import { HighscoresService } from '../providers/highscores.service';
 import { Highscore } from '../models/highscore.model';
+import { HighscoresService } from '../providers/highscores.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,14 +12,20 @@ import { Highscore } from '../models/highscore.model';
   styleUrls: ['./board.component.css']
 })
 
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
+  highScoresSub: Subscription;
+  highscores: any[];
   gameBoard: any[] = [];
   bombsTotalMain: number;
   gameStatus: string;
   BOARDSIZE: number = 10;
   BOARDBOMBS: number = 12;
 
-  constructor(private highScoreServ: HighscoresService ) {
+  constructor( private highScoreServ: HighscoresService ) {
+    this.highScoresSub = highScoreServ.getScores().subscribe(data => {
+      this.highscores = data;
+      console.log("highscores from DB: ", data);
+    });
   }
 
   ngOnInit( ) {
@@ -189,6 +196,10 @@ export class BoardComponent implements OnInit {
     if (count === this.bombsTotalMain) {
       this.gameStatus = "win";
     }
+  }
+
+  ngOnDestroy() {
+    this.highScoresSub.unsubscribe();
   }
 
 }

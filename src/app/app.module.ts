@@ -14,9 +14,8 @@ import { masterFBConifg } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-// Services / models
+// Services
 import { HighscoresService } from './providers/highscores.service'
-import { Highscore } from './models/highscore.model';
 
 export const fbConfig = {
   apiKey: masterFBConifg.apiKey,
@@ -39,7 +38,7 @@ export const fbConfig = {
     AngularFireModule.initializeApp(fbConfig),
     AngularFireDatabaseModule
   ],
-  providers: [HighscoresService, Highscore],
+  providers: [HighscoresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
