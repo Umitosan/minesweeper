@@ -16,3 +16,12 @@
 </div>
 
 <h1 *ngIf="gameStatus !== 'play'">You {{gameStatus}}!!!</h1>
+
+<div class="scores-list">
+  <h2>**Highscores**</h2>
+  <div *ngFor="let score of highscores">
+    <div class="score-row">
+      <p><span>{{score.name}}</span> = <span>{{score.score}}</span></p>
+    </div>
+  </div>
+</div>
