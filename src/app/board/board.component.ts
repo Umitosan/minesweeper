@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tile } from '../tile.model';
+import { HighscoresService } from '../providers/highscores.service';
+import { Highscore } from '../models/highscore.model';
+
 
 @Component({
   selector: 'app-board',
@@ -15,7 +18,8 @@ export class BoardComponent implements OnInit {
   BOARDSIZE: number = 10;
   BOARDBOMBS: number = 12;
 
-  constructor( ) { }
+  constructor(private highScoreServ: HighscoresService ) {
+  }
 
   ngOnInit( ) {
     this.boardInit();
@@ -41,10 +45,6 @@ export class BoardComponent implements OnInit {
       }
     }
     this.gameStatus = "play";
-    // document.addEventListener('contextmenu', function(e) {  // right-click listener
-    //         console.log("right-click happened");
-    //         e.preventDefault();
-    // });
   }
 
   smileClicked() {
