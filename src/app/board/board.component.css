@@ -4,10 +4,10 @@
 }
 
 .board {
-  text-align: center;
-  background-color: lightgrey;
+  margin-left: 5px;
   height: 400px;
   width: 400px;
+  background-color: lightgrey;
   outline-color: grey;
   outline-style: solid;
   outline-width: 4px;
@@ -27,11 +27,16 @@
 #tileID {
   height: 40px;
   width: 40px;
+  /* inset | offset-x | offset-y | color */
+  box-shadow: inset 1px 1px grey;
+}
+
+.testing {
+  padding-top: 3px;
 }
 
 #smileDiv {
-  padding-left: 40%;
-  padding-right: 40%;
+  padding-left: 174px;
   margin-bottom: 10px;
 }
 
@@ -65,13 +70,12 @@
 .unclicked {
   background-image: url("./../../assets/tile.png");
   background-position: center;
-  background-size: 100%;
+  background-size: 98%;
   background-repeat: no-repeat;
 }
 
 .clean {
   background-color: lightgrey;
-  outline:2px solid grey;
 }
 
 .flagged {
@@ -86,7 +90,6 @@
   background-position: center;
   background-size: 50%;
   background-repeat: no-repeat;
-  outline:2px solid grey;
 }
 
 .bombRed {
@@ -95,7 +98,6 @@
   background-size: 50%;
   background-repeat: no-repeat;
   background-color: red;
-  outline:2px solid grey;
 }
 
 .number {
@@ -103,12 +105,12 @@
   color: blue;
   font-size: 24px;
   font-weight: bold;
-  outline:2px solid grey;
 }
 
 .scores-list {
   margin-top: 50px;
 }
+
 
 
 

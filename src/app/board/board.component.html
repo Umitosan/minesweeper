@@ -8,7 +8,7 @@
     <div class="divRow" *ngFor="let row of gameBoard">
       <div class="divCol" *ngFor="let tile of row">
         <div id="tileID" [class]="tile.status" (click)="tileClicked(tile)"  (contextmenu)="tileRightClicked($event, tile)">
-          <p *ngIf="tile.status === 'number'">{{tile.bombScore}}</p>
+          <p class="testing" *ngIf="tile.status === 'number'">{{tile.bombScore}}</p>
         </div>
       </div>
     </div>

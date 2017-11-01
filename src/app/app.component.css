@@ -2,3 +2,17 @@
   background-color: lightgrey;
   text-align: center;
 }
+
+.leftcol {
+  display: inline-block;
+}
+.midcol {
+  width: 410px;
+  display: inline-block;
+  outline-color: green;
+  outline-style: dashed;
+  outline-width: 1px;
+}
+.rightcol {
+  display: inline-block;
+}
