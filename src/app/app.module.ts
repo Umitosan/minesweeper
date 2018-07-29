@@ -10,20 +10,21 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 
 // firebase related
-import { masterFBConifg } from './api-keys';
+import { masterFirebaseConfig } from './api-keys';
+// new firebase related
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // Services
 import { HighscoresService } from './providers/highscores.service'
 
-export const fbConfig = {
-  apiKey: masterFBConifg.apiKey,
-  authDomain: masterFBConifg.authDomain,
-  databaseURL: masterFBConifg.databaseURL,
-  storageBucket: masterFBConifg.storageBucket
-};
 
+export const fbConfig = {
+  apiKey: masterFirebaseConfig.apiKey,
+  authDomain: masterFirebaseConfig.authDomain,
+  databaseURL: masterFirebaseConfig.databaseURL,
+  storageBucket: masterFirebaseConfig.storageBucket
+};
 
 @NgModule({
   declarations: [
