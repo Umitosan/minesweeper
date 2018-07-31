@@ -1,6 +1,6 @@
 
 .row {
-  background-color: lightgrey;
+  background-color: white;
 }
 
 .board {
@@ -31,8 +31,9 @@
   box-shadow: inset 1px 1px grey;
 }
 
-.testing {
-  padding-top: 3px;
+.tile-txt {
+  margin: 0px 0px 0px 0px;
+  padding-top: 7px;
 }
 
 #smileDiv {

@@ -1,6 +1,8 @@
 .mainDiv {
-  background-color: lightgrey;
   text-align: center;
+  height: 100vh;
+  /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+  background-image: linear-gradient(to top left, #fddb92 0%, #d1fdff 55%);
 }
 
 .leftcol {
@@ -9,9 +11,9 @@
 .midcol {
   width: 410px;
   display: inline-block;
-  outline-color: green;
+  /* outline-color: green;
   outline-style: dashed;
-  outline-width: 1px;
+  outline-width: 1px; */
 }
 .rightcol {
   display: inline-block;
