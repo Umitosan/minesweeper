@@ -21,14 +21,14 @@ export class BoardComponent implements OnInit, OnDestroy {
   BOARDSIZE: number = 10;
   BOARDBOMBS: number = 12;
 
-  constructor( private highScoreServ: HighscoresService ) {
+  constructor( public highScoreServ: HighscoresService ) {
     this.highScoresSub = highScoreServ.getScores().subscribe(data => {
       this.highscores = data;
       console.log("highscores from DB: ", data);
     });
   }
 
-  ngOnInit( ) {
+  ngOnInit() {
     this.boardInit();
   }
 
