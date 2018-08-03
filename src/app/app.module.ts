@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 
 // firebase related
-import { masterFirebaseConfig } from './api-keys';
+// import { masterFirebaseConfig } from './api-keys';
 // new firebase related
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
