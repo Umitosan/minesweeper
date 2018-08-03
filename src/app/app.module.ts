@@ -21,25 +21,44 @@ import { HighscoresService } from './providers/highscores.service';
 // test
 import { environment } from '../environments/environment';
 
-if (environment) {
-  console.log("environment.production = ", environment.production);
-} else {
-  console.log("environment.production = ", environment.production);
-}
-
-// export const fbConfigProd =  {
-//   apiKey: environment.apiKey,
-//   authDomain: environment.authDomain,
-//   databaseURL: environment.databaseURL,
-//   storageBucket: environment.storageBucket
-// };
-
+console.log("environment.production = ", environment.production);
+// export const fbConfig = {};
 export const fbConfig = {
-  apiKey: masterFirebaseConfig.apiKey,
-  authDomain: masterFirebaseConfig.authDomain,
-  databaseURL: masterFirebaseConfig.databaseURL,
-  storageBucket: masterFirebaseConfig.storageBucket
+    apiKey: masterFirebaseConfig.apiKey,
+    authDomain: masterFirebaseConfig.authDomain,
+    databaseURL: masterFirebaseConfig.databaseURL,
+    storageBucket: masterFirebaseConfig.storageBucket
 };
+// if (environment.production) {
+//     fbConfig =  {
+//       // apiKey: testKeys.apiKey,
+//       // authDomain: testKeys.authDomain,
+//       // databaseURL: testKeys.databaseURL,
+//       // storageBucket: testKeys.storageBucket
+//
+//       // apiKey: environment.apiKey,
+//       // authDomain: environment.authDomain,
+//       // databaseURL: "https://minesweeper-79115.firebaseio.com",
+//       // storageBucket: environment.storageBucket
+//
+//       apiKey: masterFirebaseConfig.apiKey,
+//       authDomain: masterFirebaseConfig.authDomain,
+//       databaseURL: masterFirebaseConfig.databaseURL,
+//       storageBucket: masterFirebaseConfig.storageBucket
+//     };
+// } else {
+//   fbConfig = {
+//     apiKey: masterFirebaseConfig.apiKey,
+//     authDomain: masterFirebaseConfig.authDomain,
+//     databaseURL: masterFirebaseConfig.databaseURL,
+//     storageBucket: masterFirebaseConfig.storageBucket
+//   };
+// }
+
+
+
+console.log("fbConfig = ", fbConfig);
+
 
 @NgModule({
   declarations: [
@@ -57,4 +76,5 @@ export const fbConfig = {
   providers: [HighscoresService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
