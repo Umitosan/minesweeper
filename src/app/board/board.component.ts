@@ -32,6 +32,10 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.boardInit();
   }
 
+  setScore(newName, newScore) {
+    this.highscores.push({name: newName, score: newScore});
+  }
+
   boardInit() {
     // create gameBoard
     let tmpBoardArr: any[] = [];
