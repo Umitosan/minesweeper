@@ -24,10 +24,10 @@ import { environment } from '../environments/environment';
 console.log("environment.production = ", environment.production);
 // export const fbConfig = {};
 export const fbConfig = {
-    apiKey: masterFirebaseConfig.apiKey,
-    authDomain: masterFirebaseConfig.authDomain,
-    databaseURL: masterFirebaseConfig.databaseURL,
-    storageBucket: masterFirebaseConfig.storageBucket
+      apiKey: environment.apiKey,
+      authDomain: environment.authDomain,
+      databaseURL: environment.databaseURL,
+      storageBucket: environment.storageBucket
 };
 // if (environment.production) {
 //     fbConfig =  {
