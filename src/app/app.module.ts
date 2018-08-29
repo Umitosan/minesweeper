@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 
 // firebase related
-// import { masterFirebaseConfig } from './api-keys';
+import { masterFirebaseConfig } from './api-keys';
 // new firebase related
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -18,17 +18,15 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 // Services
 import { HighscoresService } from './providers/highscores.service';
 
-// test
-import { environment } from '../environments/environment';
 
-console.log("environment.production = ", environment.production);
-// export const fbConfig = {};
-export const fbConfig = {
-      apiKey: environment.apiKey,
-      authDomain: environment.authDomain,
-      databaseURL: environment.databaseURL,
-      storageBucket: environment.storageBucket
+
+var fbConfig = {
+  apiKey: masterFirebaseConfig.apiKey,
+  authDomain: masterFirebaseConfig.authDomain,
+  databaseURL: masterFirebaseConfig.databaseURL,
+  storageBucket: masterFirebaseConfig.storageBucket
 };
+
 // if (environment.production) {
 //     fbConfig =  {
 //       // apiKey: testKeys.apiKey,
@@ -54,10 +52,6 @@ export const fbConfig = {
 //     storageBucket: masterFirebaseConfig.storageBucket
 //   };
 // }
-
-
-
-console.log("fbConfig = ", fbConfig);
 
 
 @NgModule({
