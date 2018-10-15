@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-// import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class HighscoresService {
   // scores: FirebaseListObservable<any[]>;
-  scores: AngularFireList<any[]>;
+  scoresListRef: AngularFireList<any>;
   afdb: AngularFireDatabase;
 
   constructor(db: AngularFireDatabase) {
-    // this.scores = db.list('highscores').valueChanges();
-    this.scores = db.list('highscores');
-    console.log(this.scores);
+    this.scoresListRef = db.list('highscores');
     this.afdb = db;
+    // db.list('highscores').auditTrail().subscribe(console.log)
   }
 
   getScores() {
-    return this.scores.valueChanges();
+    return this.scoresListRef.valueChanges();
+  }
+
+  saveScore(newName: string, newScore: number) {
+    this.scoresListRef.push({name: newName, score: newScore});
   }
 
 }

@@ -1,5 +1,14 @@
-<div id="smileDiv">
-  <div class="{{gameStatus}}" (click)="smileClicked()">
+
+
+
+
+
+<div class="board-top">
+  <div class="lvl-timer">
+    {{playTimeStr}}
+  </div>
+  <div class="smile-contain">
+    <div class="{{gameStatus}}" (click)="smileClicked()"></div>
   </div>
 </div>
 
@@ -7,7 +16,7 @@
 
     <div class="divRow" *ngFor="let row of gameBoard">
       <div class="divCol" *ngFor="let tile of row">
-        <div id="tileID" [class]="tile.status" (click)="tileClicked(tile)"  (contextmenu)="tileRightClicked($event, tile)">
+        <div id="tileID" [class]="tile.status" (click)="tileClicked(tile)" (contextmenu)="tileRightClicked($event, tile)">
           <div class="tile-txt" *ngIf="tile.status === 'number'">{{tile.bombScore}}</div>
         </div>
       </div>
@@ -15,13 +24,27 @@
 
 </div>
 
-<h1 *ngIf="gameStatus !== 'play'">You {{gameStatus}}!!!</h1>
+<h1 *ngIf="gameStatus === 'win' || gameStatus === 'lose'">You {{gameStatus}}!!!</h1>
+
+<div *ngIf="gameStatus === 'win'">
+  <div class="{{formShow}}">
+    <p class="win_msg">
+      Add your name to the list of high scores
+    </p>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+      required [(ngModel)]="playerName" name="name">
+    </div>
+    <button type="button" name="save-btn" (click)="saveHighScore(playerName,playTime); this.hideForm();;">Save</button>
+  </div>
+</div>
 
 <div class="scores-list">
-  <h2>**Highscores**</h2>
+  <h3>Highscores</h3>
   <div *ngFor="let score of highscores">
     <div class="score-row">
-      <p><span>{{score.name}}</span> = <span>{{score.score}}</span></p>
+      <p><span>{{score.name}}</span> : <span>{{score.score}}</span></p>
     </div>
   </div>
 </div>

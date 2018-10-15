@@ -17,23 +17,26 @@ export class BoardComponent implements OnInit, OnDestroy {
   highscores: any[];
   gameBoard: any[] = [];
   bombsTotalMain: number;
-  gameStatus: string;
+  gameStatus: string = "init"; // init play lose win
   BOARDSIZE: number = 10;
   BOARDBOMBS: number = 12;
+  gameStartTime: number = 0;
+  playTime: number = 0;
+  playTimeStr: string = '000';
+  playerName: string = 'john doe';
+  formShow: string = 'show';
 
   constructor( public highScoreServ: HighscoresService ) {
     this.highScoresSub = highScoreServ.getScores().subscribe(data => {
       this.highscores = data;
-      console.log("highscores from DB: ", data);
+      // console.log("highscores from DB: ", data);
     });
   }
 
   ngOnInit() {
     this.boardInit();
-  }
-
-  setScore(newName, newScore) {
-    this.highscores.push({name: newName, score: newScore});
+    this.gameStatus = "init";
+    setInterval(()=>{ this.updateTimer() },200);
   }
 
   boardInit() {
@@ -55,11 +58,43 @@ export class BoardComponent implements OnInit, OnDestroy {
         this.setBombScore(i,j);
       }
     }
+  }
+
+  hideForm() {
+    this.formShow = 'hide';
+  }
+
+  startPlay() {
     this.gameStatus = "play";
+    this.gameStartTime = performance.now();
   }
 
   smileClicked() {
     this.boardInit();
+    this.playTime = 0;
+    this.playTimeStr = '000';
+    this.gameStatus = "init";
+  }
+
+  updateTimer() {
+    if (this.gameStatus === 'play') {
+      this.playTime = Math.round( (performance.now() - this.gameStartTime) / 1000 );
+      let timeStr = this.playTime.toString();
+      let pt;
+      if (timeStr.length === 1) {
+        pt = "00"+timeStr;
+      } else if ( timeStr.length === 2) {
+        pt = "0"+timeStr;
+      } else {
+        // console.log("updateTimer 3 or more digets");
+      }
+      // console.log('play time = ', pt);
+      this.playTimeStr = pt;
+    } // if
+  }
+
+  saveHighScore(nameToSave,scoreToSave) {
+    this.highScoreServ.saveScore(nameToSave,scoreToSave);
   }
 
   randomIntFromInterval(min,max) {
@@ -111,6 +146,7 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   tileClicked(someTile) {
     // prevent left-click if flagged OR game over
+    if (this.gameStatus === 'init') { this.startPlay(); }
     if ((this.gameBoard[someTile.tRow][someTile.tCol].status !== 'flagged') && (this.gameStatus === 'play')) {
           // normal left click
           if (someTile.bomb === true) {

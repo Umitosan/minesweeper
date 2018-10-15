@@ -1,4 +1,46 @@
 
+
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Permanent+Marker');
+
+/*
+font-family: 'Permanent Marker', cursive;
+font-family: 'Orbitron', sans-serif;
+*/
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+.board-top {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  /* outline-color: blue;
+  outline-style: solid;
+  outline-width: 1px; */
+}
+.lvl-timer {
+  width: 136px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 54px;
+  color: red;
+  /* outline-color: red;
+  outline-style: solid;
+  outline-width: 1px; */
+}
+.smile-contain {
+  width: 62px; /* simle image = 60px */
+  margin: 0px 0px 0px 40px;
+  /* outline-color: blue;
+  outline-style: solid;
+  outline-width: 1px; */
+}
+
+
+
 .row {
   background-color: white;
 }
@@ -36,12 +78,7 @@
   padding-top: 7px;
 }
 
-#smileDiv {
-  padding-left: 174px;
-  margin-bottom: 10px;
-}
-
-.play {
+.play, .init {
   background-image: url("./../../assets/smile.png");
   background-position: center;
   background-size: 100%;
@@ -110,6 +147,8 @@
 
 .scores-list {
   margin-top: 50px;
+  font-size: 24px;
+  font-family: 'Orbitron', sans-serif;
 }
 
 

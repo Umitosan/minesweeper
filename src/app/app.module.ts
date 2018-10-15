@@ -27,33 +27,6 @@ var fbConfig = {
   storageBucket: masterFirebaseConfig.storageBucket
 };
 
-// if (environment.production) {
-//     fbConfig =  {
-//       // apiKey: testKeys.apiKey,
-//       // authDomain: testKeys.authDomain,
-//       // databaseURL: testKeys.databaseURL,
-//       // storageBucket: testKeys.storageBucket
-//
-//       // apiKey: environment.apiKey,
-//       // authDomain: environment.authDomain,
-//       // databaseURL: "https://minesweeper-79115.firebaseio.com",
-//       // storageBucket: environment.storageBucket
-//
-//       apiKey: masterFirebaseConfig.apiKey,
-//       authDomain: masterFirebaseConfig.authDomain,
-//       databaseURL: masterFirebaseConfig.databaseURL,
-//       storageBucket: masterFirebaseConfig.storageBucket
-//     };
-// } else {
-//   fbConfig = {
-//     apiKey: masterFirebaseConfig.apiKey,
-//     authDomain: masterFirebaseConfig.authDomain,
-//     databaseURL: masterFirebaseConfig.databaseURL,
-//     storageBucket: masterFirebaseConfig.storageBucket
-//   };
-// }
-
-
 @NgModule({
   declarations: [
     AppComponent,
