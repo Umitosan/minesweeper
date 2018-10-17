@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
+import { Highscore } from '../models/highscore.model';
 
 @Injectable()
 export class HighscoresService {
-  // scores: FirebaseListObservable<any[]>;
   scoresListRef: AngularFireList<any>;
   afdb: AngularFireDatabase;
 
@@ -19,6 +19,7 @@ export class HighscoresService {
   }
 
   saveScore(newName: string, newScore: number) {
+    // let tmpHS = new Highscore({name: newName, score: newScore});
     this.scoresListRef.push({name: newName, score: newScore});
   }
 

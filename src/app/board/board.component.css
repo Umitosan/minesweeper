@@ -22,7 +22,7 @@ font-family: 'Orbitron', sans-serif;
   outline-style: solid;
   outline-width: 1px; */
 }
-.lvl-timer {
+.lvl-timer, .bombs-remaining {
   width: 136px;
   font-family: 'Orbitron', sans-serif;
   font-size: 54px;
@@ -31,15 +31,19 @@ font-family: 'Orbitron', sans-serif;
   outline-style: solid;
   outline-width: 1px; */
 }
+.bombs-remaining {
+}
 .smile-contain {
   width: 62px; /* simle image = 60px */
-  margin: 0px 0px 0px 40px;
+  margin-left: 38px;
+  margin-top: 4px;
   /* outline-color: blue;
   outline-style: solid;
   outline-width: 1px; */
 }
-
-
+.lvl-timer {
+  margin: auto 0px auto auto;
+}
 
 .row {
   background-color: white;

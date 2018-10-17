@@ -4,16 +4,18 @@
 
 
 <div class="board-top">
-  <div class="lvl-timer">
-    {{playTimeStr}}
+  <div class="bombs-remaining">
+    {{bombsRemainStr}}
   </div>
   <div class="smile-contain">
     <div class="{{gameStatus}}" (click)="smileClicked()"></div>
   </div>
+  <div class="lvl-timer">
+    {{playTimeStr}}
+  </div>
 </div>
 
 <div class="board">
-
     <div class="divRow" *ngFor="let row of gameBoard">
       <div class="divCol" *ngFor="let tile of row">
         <div id="tileID" [class]="tile.status" (click)="tileClicked(tile)" (contextmenu)="tileRightClicked($event, tile)">
@@ -21,7 +23,6 @@
         </div>
       </div>
     </div>
-
 </div>
 
 <h1 *ngIf="gameStatus === 'win' || gameStatus === 'lose'">You {{gameStatus}}!!!</h1>
@@ -36,15 +37,17 @@
       <input type="text" class="form-control" id="name"
       required [(ngModel)]="playerName" name="name">
     </div>
-    <button type="button" name="save-btn" (click)="saveHighScore(playerName,playTime); this.hideForm();;">Save</button>
+    <button type="button" name="save-btn" (click)="saveHighScore(playerName,playTime); this.hideForm();">Save</button>
   </div>
 </div>
 
 <div class="scores-list">
   <h3>Highscores</h3>
-  <div *ngFor="let score of highscores">
-    <div class="score-row">
-      <p><span>{{score.name}}</span> : <span>{{score.score}}</span></p>
+  <div *ngIf="highscores !== undefined">
+    <div *ngFor="let score of highscores | rank">
+      <div class="score-row">
+        <p><span>{{score.name}}</span> : <span>{{score.score}}</span></p>
+      </div>
     </div>
   </div>
 </div>

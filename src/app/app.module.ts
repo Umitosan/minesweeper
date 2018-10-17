@@ -17,6 +17,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // Services
 import { HighscoresService } from './providers/highscores.service';
+import { RankPipe } from './rank.pipe';
 
 
 
@@ -30,7 +31,8 @@ var fbConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    BoardComponent
+    BoardComponent,
+    RankPipe
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,8 @@ export class BoardComponent implements OnInit, OnDestroy {
   highscores: any[];
   gameBoard: any[] = [];
   bombsTotalMain: number;
+  bombsRemainStr: string = '010';
+  bombsRemainCount: number = 10;
   gameStatus: string = "init"; // init play lose win
   BOARDSIZE: number = 10;
   BOARDBOMBS: number = 12;
@@ -29,7 +31,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor( public highScoreServ: HighscoresService ) {
     this.highScoresSub = highScoreServ.getScores().subscribe(data => {
       this.highscores = data;
-      // console.log("highscores from DB: ", data);
+      console.log("this.highscores at board: ", data);
     });
   }
 
@@ -74,6 +76,8 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.playTime = 0;
     this.playTimeStr = '000';
     this.gameStatus = "init";
+    this.bombsRemainStr = '010';
+    this.bombsRemainCount = 10;
   }
 
   updateTimer() {
@@ -91,6 +95,20 @@ export class BoardComponent implements OnInit, OnDestroy {
       // console.log('play time = ', pt);
       this.playTimeStr = pt;
     } // if
+  }
+
+  updateBombsCount(numToAdd) {
+    this.bombsRemainCount += numToAdd;
+    let tmpStr = this.bombsRemainCount.toString();
+    let outputStr;
+    if (tmpStr.length === 1) {
+      outputStr = "00"+tmpStr;
+    } else if ( tmpStr.length === 2) {
+      outputStr = "0"+tmpStr;
+    } else {
+      // nottin
+    }
+    this.bombsRemainStr = outputStr;
   }
 
   saveHighScore(nameToSave,scoreToSave) {
@@ -169,9 +187,11 @@ export class BoardComponent implements OnInit, OnDestroy {
     event.preventDefault();
     if (this.gameStatus === 'play') {
           if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'flagged') {
-            this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked'
+            this.gameBoard[someTile.tRow][someTile.tCol].status = 'unclicked';
+            this.updateBombsCount(1);
           } else if (this.gameBoard[someTile.tRow][someTile.tCol].status === 'unclicked') {
             this.gameBoard[someTile.tRow][someTile.tCol].status = 'flagged';
+            this.updateBombsCount(-1);
           }
     }
   }
