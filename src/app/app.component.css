@@ -8,12 +8,15 @@
 .leftcol {
   display: inline-block;
 }
-.midcol {
+.midcol  {
   width: 410px;
   display: inline-block;
   /* outline-color: green;
   outline-style: dashed;
   outline-width: 1px; */
+}
+.midcol h1#welcome {
+  font-family: 'Orbitron', sans-serif;
 }
 .rightcol {
   display: inline-block;

@@ -33,10 +33,10 @@ font-family: 'Orbitron', sans-serif;
 }
 .lvl-timer, .bombs-remaining {
   width: 136px;
-  /* font-family: 'Orbitron', sans-serif; */
   font-family: 'clock2';
-  font-size: 54px;
-  color: red;
+  font-weight: bolder;
+  font-size: 76px;
+  color: rgb(220,60,60);
   /* outline-color: red;
   outline-style: solid;
   outline-width: 1px; */
@@ -46,13 +46,13 @@ font-family: 'Orbitron', sans-serif;
 .smile-contain {
   width: 62px; /* simle image = 60px */
   margin-left: 38px;
-  margin-top: 4px;
+  margin-top: 8px;
   /* outline-color: blue;
   outline-style: solid;
   outline-width: 1px; */
 }
 .lvl-timer {
-  margin: auto 0px auto auto;
+  margin: 0px 0px 0px auto;
 }
 
 .row {
