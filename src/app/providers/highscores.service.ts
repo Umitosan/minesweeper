@@ -19,7 +19,6 @@ export class HighscoresService {
   }
 
   saveScore(newName: string, newScore: number) {
-    // let tmpHS = new Highscore({name: newName, score: newScore});
     this.scoresListRef.push({name: newName, score: newScore});
   }
 

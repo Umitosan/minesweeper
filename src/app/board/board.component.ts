@@ -31,7 +31,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor( public highScoreServ: HighscoresService ) {
     this.highScoresSub = highScoreServ.getScores().subscribe(data => {
       this.highscores = data;
-      console.log("this.highscores at board: ", data);
+      // console.log("this.highscores at board: ", data);
     });
   }
 
