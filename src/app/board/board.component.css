@@ -7,7 +7,7 @@
   src: url('/assets/clock1.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'clock2';
+  font-family: 'digital-7';
   src: url('/assets/digital7/digital-7.ttf') format('truetype');
 }
 
@@ -33,7 +33,7 @@ font-family: 'Orbitron', sans-serif;
 }
 .lvl-timer, .bombs-remaining {
   width: 136px;
-  font-family: 'clock2';
+  font-family: 'digital-7';
   font-weight: bolder;
   font-size: 76px;
   color: rgb(220,60,60);
